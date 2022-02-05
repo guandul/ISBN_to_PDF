@@ -10,6 +10,8 @@ import os
 from PIL import Image
 import csv
 
+local_path = os.environ.get("LOCAL_PATH")
+
 max_num_lines_xml_request = 128
 
 class XmlToBookData:
@@ -20,9 +22,9 @@ class XmlToBookData:
         self.password = password
         self.template_path = "source/"
         self.template_name = "template.html"
-        self.css_file = "/home/ramon/PycharmProjects/DilvePDF/source/style.css"
-        self.image_path = "/home/ramon/PycharmProjects/DilvePDF/source/book_covers/"
-        self.logo = "/home/ramon/PycharmProjects/DilvePDF/source/logo-panoplia-medium.jpg"
+        self.css_file = local_path + "source/style.css"
+        self.image_path = local_path + "source/book_covers/"
+        self.logo = local_path + "source/logo-panoplia-medium.jpg"
 
         count = 1
         short_isbn_list = []
@@ -188,7 +190,7 @@ class XmlToBookData:
             }
 
             html = template.render(input_data)
-            output_pdf_file = f"/home/ramon/PycharmProjects/DilvePDF/source/output/{isbn}.pdf"
+            output_pdf_file = f"{local_path}source/output/{isbn}.pdf"
             pdf_list.append(output_pdf_file)
             print(output_pdf_file)
             pdfkit.from_string(html, output_pdf_file, css=self.css_file, options=options, configuration=config)
