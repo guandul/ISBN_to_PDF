@@ -161,7 +161,7 @@ class XmlToBookData:
             "encoding": "UTF-8"
 
         }
-        # TODO to deploy https://stackoverflow.com/questions/51720924/wkhtmltopdf-doesnt-work-when-deployed-in-heroku-python-app-usingflask-pdfkit
+
         config = pdfkit.configuration(wkhtmltopdf="/usr/bin/wkhtmltopdf")
         input_data = {}
         pdf_list = []

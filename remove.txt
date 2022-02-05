@@ -1,4 +1,2 @@
-
-# TODO dependencies
 # TODO wkhtmltopdf to deploy
-
+# TODO to deploy https://stackoverflow.com/questions/51720924/wkhtmltopdf-doesnt-work-when-deployed-in-heroku-python-app-usingflask-pdfkit
