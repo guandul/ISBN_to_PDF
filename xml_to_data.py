@@ -164,8 +164,7 @@ class XmlToBookData:
 
         }
 
-        # config = pdfkit.configuration(wkhtmltopdf="/usr/bin/wkhtmltopdf")
-        config = pdfkit.configuration(wkhtmltopdf="source/bin/wkhtmltopdf")
+        config = pdfkit.configuration(wkhtmltopdf="/usr/bin/wkhtmltopdf")
         input_data = {}
         pdf_list = []
         for isbn, book_data in self.book_dictionary.items():
