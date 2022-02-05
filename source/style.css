@@ -1,0 +1,31 @@
+body{
+    font-family: Sans serif;
+}
+.header{
+    text-align: center;
+    margin: 25 0;
+}
+.container{
+    padding: 40 75 0 75;
+}
+.column1 {
+  float: left;
+  width: 30%;
+}
+.column2 {
+  float: left;
+  width: 60%;
+  text-align: left;
+  padding-left: 50;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.description{
+    text-align: justify;
+    line-height: 1.8;
+}
+
+

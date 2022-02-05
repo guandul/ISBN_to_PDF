@@ -1,0 +1,36 @@
+<meta charset="UTF-8">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Proza+Libre:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <img src="file://{{logo}}" />
+<!--        <p><strong>la Panoplia</strong></p>-->
+    </div>
+    <hr />
+    <div class="container">
+        <div class="row">
+            <div class="column1">
+                <img style="display: block; margin-left: auto; margin-right: auto;" src="file://{{cover}}" alt="" width="290" />
+            </div>
+            <div class="column2">
+                <p><strong>T&iacute;tulo:</strong> {{title}}</p>
+                <p><strong>Autor:</strong> {{author}}</p>
+                <p><strong>ISBN:</strong> {{isbn}}</p>
+                <p><strong>Editor:</strong> {{editor}}</p>
+                <p><strong>Año:</strong> {{year}}</p>
+                <p><strong>Longitud:</strong> {{number_pages}} páginas</p>
+                <p><strong>Dimensión:</strong> {{width}} x {{height}} {{unit_measure}}</p>
+                <p><strong>Precio:</strong> {{price}} {{currency}}</p>
+            </div>
+        </div>
+        <div class="description">
+            <p><strong>Sinopsis</strong>:</p>
+            <p>{{description}}</p>
+        </div>
+    </div>
+</body>
+
+

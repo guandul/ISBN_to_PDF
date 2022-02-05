@@ -1,0 +1,22 @@
+{% include "header.html" %}
+
+	 <div class="signin">
+		 {% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for message in messages %}
+					<p class="error">{{ message }}</p>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+     <form action="{{ url_for('login') }}" method="post">
+	      <input type="text" id="user" name="user" class="user" value="Usuario" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" />
+		  <input type="password" id="password" name="password" class="pass" value="Clave" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" />
+<!--		  <p><a href="#">Forgot Password?</a></p>-->
+	    </div>
+			  <input type="submit" value="Ingresar" />
+		</div>
+		 </form>
+
+</div>
+
+{% include "footer.html" %}

@@ -1,0 +1,23 @@
+{% include "header.html" %}
+
+	 <div class="signin">
+		 {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="error">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+		 {% endwith %}
+		 <form action="" method="post">
+			 <dl>
+            	<dt>Lista de ISBN a incluir (un código por línea):</dt>
+            	<dd>{{ form.isbns(cols="35", rows="10") }}</dd>
+        	</dl>
+	 </div>
+			  <input type="submit" value="Enviar" />
+		</div>
+		 </form>
+
+</div>
+
+{% include "footer.html" %}

@@ -1,0 +1,32 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Generador de fichas de libros en PDF</title>
+<!-- For-Mobile-Apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="User Icon Login Form Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //For-Mobile-Apps -->
+<!-- Style -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" media="all" />
+
+</head>
+<body>
+<div class="container">
+     {% if current_user.is_authenticated %}
+          <h1><a href="{{ url_for('input_data') }}">Generador de fichas de libros en PDF</a></h1>
+     {% else %}
+          <h1>Generador de fichas de libros en PDF</h1>
+     {% endif %}
+     <div class="contact-form">
+<!--		 <div class="profile-pic">-->
+<!--			<img src="{{ url_for('static', filename='images/white_book.png') }}" alt="User Icon"/>-->
+<!--		 </div>-->
