@@ -1,5 +1,5 @@
 body{
-    font-family: Sans serif;
+    font-family: Proza Libre;
 }
 .header{
     text-align: center;
@@ -10,13 +10,14 @@ body{
 }
 .column1 {
   float: left;
-  width: 30%;
+  width: 250px;
+  padding-top: 19px;
 }
 .column2 {
   float: left;
-  width: 60%;
   text-align: left;
-  padding-left: 50;
+  padding-left: 30px;
+  width: 298px;
 }
 .row:after {
   content: "";

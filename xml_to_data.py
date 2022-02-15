@@ -1,14 +1,20 @@
+# Libs to handle XML
 import xml.etree.cElementTree as ET
-from urllib.request import urlopen
 from bs4 import BeautifulSoup
-import jinja2
-import pdfkit
+from urllib.request import urlopen
 import requests
+
+# Libs to handel HTML to PDF convertion
+import jinja2
+from weasyprint import HTML, CSS
 from PyPDF2 import PdfFileMerger
+
+# Lib to handle files
 import shutil
 import os
 from PIL import Image
 import csv
+
 
 local_path = os.environ.get("LOCAL_PATH")
 
@@ -22,7 +28,10 @@ class XmlToBookData:
         self.password = password
         self.template_path = "source/"
         self.template_name = "template.html"
-        self.css_file = local_path + "source/style.css"
+        css_file = local_path + "source/style.css"
+        self.css_style = ""
+        with open(css_file) as css_handler:
+            self.css_style = css_handler.read()
         self.image_path = local_path + "source/book_covers/"
         self.logo = local_path + "source/logo-panoplia-medium.jpg"
 
@@ -140,7 +149,7 @@ class XmlToBookData:
                 shutil.copyfile("source/blank_book.jpg", f"source/book_covers/{book}.jpg")
 
     def resize_image(self, image_file):
-        base_width = 290
+        base_width = 250
         try:
             img = Image.open(image_file)
         except:
@@ -164,7 +173,6 @@ class XmlToBookData:
 
         }
 
-        config = pdfkit.configuration(wkhtmltopdf="/usr/bin/wkhtmltopdf")
         input_data = {}
         pdf_list = []
         for isbn, book_data in self.book_dictionary.items():
@@ -188,11 +196,13 @@ class XmlToBookData:
                 "description": book_data["description"],
             }
 
-            html = template.render(input_data)
+            html_from_template = template.render(input_data)
             output_pdf_file = f"{local_path}source/output/{isbn}.pdf"
             pdf_list.append(output_pdf_file)
             print(output_pdf_file)
-            pdfkit.from_string(html, output_pdf_file, css=self.css_file, options=options, configuration=config)
+            html_object = HTML(string=html_from_template)
+            css_object = CSS(string=self.css_style)
+            html_object.write_pdf(output_pdf_file, stylesheets=[css_object])
             os.remove(cover)
 
         # Merge PDF;
