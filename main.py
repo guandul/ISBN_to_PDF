@@ -80,6 +80,7 @@ def input_data():
 
         # Check ISBN format
         for isbn in isbn_list:
+            isbn = isbn.replace("-", "")
             error = check_isbn(isbn)
             if error != "ok":
                 flash(error)
