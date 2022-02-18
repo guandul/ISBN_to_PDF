@@ -22,7 +22,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body>
 <div class="container">
      {% if current_user.is_authenticated %}
-          <h1><a href="{{ url_for('input_data') }}">Generador de fichas de libros en PDF</a></h1>
+          <h1><a href="{{ url_for('menu') }}">Generador de fichas de libros en PDF</a></h1>
      {% else %}
           <h1>Generador de fichas de libros en PDF</h1>
      {% endif %}

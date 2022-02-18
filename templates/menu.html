@@ -1,0 +1,25 @@
+{% include "header.html" %}
+
+	 <div class="signin">
+		 {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="error">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+		 {% endwith %}
+		 <div>
+			 <p>
+				 <h3>Opciones disponiles:</h3>
+			 </p>
+			 <p><a href="{{ url_for('make_pdf') }}">Generar ficha PDF</a></p>
+			 <p><a href="{{ url_for('make_csv') }}">Generar pedido CSV</a></p>
+		 </div>
+	 </div>
+
+		</div>
+
+
+</div>
+
+{% include "footer.html" %}

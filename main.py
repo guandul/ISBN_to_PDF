@@ -64,16 +64,21 @@ def login():
     else:
         if check_password_hash(user.password, password_input):
             login_user(user)
-            return redirect(url_for('input_data'))
+            return redirect(url_for('menu'))
         else:
             error = "Clave incorrecta. Por favor intente de nuevo"
             flash(error)
             return render_template("index.html")
 
-
-@app.route('/input_data', methods=["GET", "POST"])
+@app.route('/menu')
 @login_required
-def input_data():
+def menu():
+    return render_template("menu.html")
+
+
+@app.route('/make_pdf', methods=["GET", "POST"])
+@login_required
+def make_pdf():
     form = InputBooksForm()
     if request.method == "POST":
         isbn_list = request.form["isbns"].split()
@@ -84,7 +89,7 @@ def input_data():
             error = check_isbn(isbn)
             if error != "ok":
                 flash(error)
-                return redirect("input_data")
+                return redirect("make_pdf")
 
         data = XmlToBookData(isbn_list, user_xml, password)
 
@@ -95,26 +100,59 @@ def input_data():
         error = data.error_dictionary
         flash(error)
 
-        return redirect(url_for("success"))
+        return redirect(url_for("download_menu_pdf"))
 
-    return render_template("input.html", form=form)
+    return render_template("make_pdf.html", form=form)
 
 
-@app.route('/success')
+@app.route('/make_csv', methods=["GET", "POST"])
 @login_required
-def success():
-    return render_template("download.html")
+def make_csv():
+    form = InputBooksForm()
+    if request.method == "POST":
+        isbn_list = request.form["isbns"].split()
+
+        # Check ISBN format
+        for isbn in isbn_list:
+            isbn = isbn.replace("-", "")
+            error = check_isbn(isbn)
+            if error != "ok":
+                flash(error)
+                return redirect("make_csv")
+
+        data = XmlToBookData(isbn_list, user_xml, password)
+
+        data.create_csv()
+
+        error = data.error_dictionary
+        flash(error)
+
+        return redirect(url_for("download_menu_csv"))
+
+    return render_template("make_csv.html", form=form)
 
 
-@app.route('/download_pdf')
+@app.route('/download_menu_pdf')
 @login_required
-def download_pdf():
+def download_menu_pdf():
+    return render_template("download_pdf.html")
+
+
+@app.route('/download_menu_csv')
+@login_required
+def download_menu_csv():
+    return render_template("download_csv.html")
+
+
+@app.route('/download_file_pdf')
+@login_required
+def download_file_pdf():
     return send_from_directory('static', "files/recomendacion_panoplia.pdf")
 
 
-@app.route('/download_csv')
+@app.route('/download_file_csv')
 @login_required
-def download_csv():
+def download_file_csv():
     return send_from_directory('static', "files/pedido_panoplia.csv")
 
 
