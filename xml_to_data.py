@@ -110,7 +110,7 @@ class XmlToBookData:
                     height = measure.findtext("{http://www.editeur.org/onix/2.1/reference}Measurement")
 
             unit_measure = book.findtext("{http://www.editeur.org/onix/2.1/reference}Measure/{http://www.editeur.org/onix/2.1/reference}MeasureUnitCode")
-            price = book.findtext("{http://www.editeur.org/onix/2.1/reference}SupplyDetail/{http://www.editeur.org/onix/2.1/reference}Price/{http://www.editeur.org/onix/2.1/reference}PriceAmount")
+            price = book.findtext("{http://www.editeur.org/onix/2.1/reference}SupplyDetail/{http://www.editeur.org/onix/2.1/reference}Price/{http://www.editeur.org/onix/2.1/reference}TaxableAmount1")
             currency = book.findtext("{http://www.editeur.org/onix/2.1/reference}SupplyDetail/{http://www.editeur.org/onix/2.1/reference}Price/{http://www.editeur.org/onix/2.1/reference}CurrencyCode")
             number_pages = book.findtext("{http://www.editeur.org/onix/2.1/reference}NumberOfPages")
             image_code = book.findtext("{http://www.editeur.org/onix/2.1/reference}MediaFile/{http://www.editeur.org/onix/2.1/reference}MediaFileLinkTypeCode")
